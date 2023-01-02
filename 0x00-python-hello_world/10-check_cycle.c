@@ -8,17 +8,15 @@
 */
 int check_cycle(listint_t *list)
 {
-	int i;
-	listint_t *trav_0, *trav_1;
+	listint_t *slow_trav, *fast_trav;
 
-	i = 0;
-	trav_0 = list, trav_1 = list;
-	while (trav_0 || trav_1)
+	slow_trav = list, fast_trav = list;
+	while (slow_trav && fast_trav && fast_trav->next)
 	{
-		if (i++ > 0 && trav_0 == trav_1)
+		slow_trav = slow_trav->next;
+		fast_trav = fast_trav->next->next;
+		if (slow_trav == fast_trav)
 			return (1);
-		trav_0 = trav_0->next;
-		trav_1 = trav_1->next->next;
 	}
 
 	return (0);
