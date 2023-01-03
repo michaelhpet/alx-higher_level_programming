@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/usr/bin/python3
 def islower(c):
     ascii_code = ord(c)
     if ascii_code > 96 and ascii_code < 123:
