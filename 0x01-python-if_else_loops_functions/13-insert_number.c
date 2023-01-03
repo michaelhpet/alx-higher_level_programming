@@ -14,38 +14,37 @@ listint_t *insert_node(listint_t **head, int number)
 	if (new_node == NULL)
 		return (NULL);
 
-	new_node->n = number;
-	new_node->next = NULL;
-	if (*head == NULL)
-		return (new_node);
+	new_node->n = number, new_node->next = NULL;
 
 	node = *head;
-	while (node)
+	if (node == NULL || node->n >= number)
 	{
-		if (node->next)
+		insert_at_beginning(head, new_node);
+		return (*head);
+	}
+
+	while (node->next)
+	{
+		if (node->n <= number && node->next->n >= number)
 		{
-			if (node->n <= number && node->next->n >= number)
-			{
-				new_node->next = node->next;
-				node->next = new_node;
-				break;
-			}
+			new_node->next = node->next, node->next = new_node;
+			return (*head);
 		}
-		else
-		{
-			if (node->n <= number)
-			{
-				node->next = new_node;
-				break;
-			}
-			else
-			{
-				new_node->next = node;
-				return (new_node);
-			}
-		}
+
 		node = node->next;
 	}
 
+	node->next = new_node;
 	return (*head);
+}
+
+/**
+ * insert_at_beginning - inserts a node at the beginning of a linked list
+ * @head: pointer to head of list
+ * @new_node: new node to add
+*/
+void insert_at_beginning(listint_t **head, listint_t *new_node)
+{
+	new_node->next = *head;
+	*head = new_node;
 }
