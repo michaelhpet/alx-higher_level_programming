@@ -8,6 +8,6 @@ def fizzbuzz():
             print("Buzz", end="")
         else:
             print(f"{number:d}", end="")
-        
+
         if number < 100:
             print(" ", end="")
