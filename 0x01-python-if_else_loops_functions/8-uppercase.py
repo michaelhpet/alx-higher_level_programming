@@ -9,4 +9,4 @@ def uppercase(str):
 
         uppercase_string += chr(ascii_code)
 
-    print(f"{uppercase_string:s}")
+    print("{0:s}".format(uppercase_string))
