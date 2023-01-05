@@ -1,11 +1,10 @@
 #!/usr/bin/python3
-
+import hidden_4
 
 def main():
-    import hidden_4
     names = dir(hidden_4)
     for name in names:
-        if name.startswith("__"):
+        if name[:2] == "__":
             continue
         print(name)
 
