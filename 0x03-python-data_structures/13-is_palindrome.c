@@ -7,7 +7,7 @@
 */
 int is_palindrome(listint_t **head)
 {
-	size_t list_len;
+	size_t list_len, half_list_len;
 	listint_t *fore, *hind, *tmp;
 
 	if (*head == NULL)
@@ -19,7 +19,8 @@ int is_palindrome(listint_t **head)
 	hind = trav_to(*head, list_len);
 	tmp = *head;
 
-	while (fore)
+	half_list_len = list_len / 2;
+	while (fore && list_len > half_list_len)
 	{
 		if (fore->n != hind->n)
 			return (0);
