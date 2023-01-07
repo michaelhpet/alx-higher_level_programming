@@ -9,10 +9,12 @@ int is_palindrome(listint_t **head)
 {
 	listint_t *fast_seek, *slow_seek, *first_half, *second_half;
 
-	if (head == NULL || (*head)->next == NULL)
+	if (*head == NULL)
 		return (1);
 
 	fast_seek = *head, first_half = *head, slow_seek = *head;
+	if (first_half->next == NULL)
+		return (1);
 
 	while (1)
 	{
