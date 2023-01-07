@@ -79,24 +79,3 @@ listint_t *reverse_list(listint_t **h)
 
 	return (previous);
 }
-
-/**
- * listint_len - counts nodes in a linked list
- * @h: head of linked list
- * Return: number of nodes in list
-*/
-unsigned int listint_len(listint_t *h)
-{
-	unsigned int count;
-	listint_t *tmp;
-
-	tmp = h;
-	count = 0;
-	while (tmp)
-	{
-		count++;
-		tmp = tmp->next;
-	}
-
-	return (count);
-}
