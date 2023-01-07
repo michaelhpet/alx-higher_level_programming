@@ -7,29 +7,54 @@
 */
 int is_palindrome(listint_t **head)
 {
-	size_t list_len, half_list_len;
-	listint_t *fore, *hind, *tmp;
+	size_t i;
+	listint_t *forward, *reverse;
 
 	if (*head == NULL)
 		return (1);
 
-	list_len = listint_len(*head) - 1;
-	half_list_len = list_len / 2;
 
-	fore = *head;
-	hind = trav_to(*head, list_len);
-	tmp = trav_to(*head, half_list_len);
+	forward = *head;
+	reverse = reverse_list(head);
 
-	while (fore && list_len > half_list_len)
+	i = listint_len(*head) / 2;
+	while (forward && i--)
 	{
-		if (fore->n != hind->n)
+		if (forward->next != reverse->next)
 			return (0);
-
-		fore = fore->next;
-		hind = trav_to(tmp, half_list_len--);
 	}
 
 	return (1);
+}
+
+/**
+ * reverse_list - reverses a linked list
+ * @h: pointer to list head
+ * Return: new head
+*/
+listint_t *reverse_list(listint_t **h)
+{
+	listint_t *previous, *current, *next;
+
+	previous = NULL;
+	current = *h;
+
+	while (current)
+	{
+		/*hold the previous value which starts from NULL (new tail)*/
+		next = current->next;
+
+		/*change the next node of the current node to the previous node*/
+		current->next = previous;
+
+		/*update previous to the current node*/
+		previous = current;
+
+		/*update current to the next node which was kept initially*/
+		current = next;
+	}
+
+	return (current);
 }
 
 /**
