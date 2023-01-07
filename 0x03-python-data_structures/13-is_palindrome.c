@@ -7,21 +7,42 @@
 */
 int is_palindrome(listint_t **head)
 {
-	size_t i;
-	listint_t *forward, *reverse;
+	listint_t *fast_seek, *slow_seek, *first_half, *second_half;
 
-	if (*head == NULL)
+	if (head == NULL || (*head)->next == NULL)
 		return (1);
 
+	fast_seek = *head, first_half = *head, slow_seek = *head;
 
-	forward = *head;
-	reverse = reverse_list(head);
-
-	i = listint_len(*head) / 2;
-	while (forward && i--)
+	while (1)
 	{
-		if (forward->next != reverse->next)
+		fast_seek = fast_seek->next->next;
+
+		if (fast_seek == NULL)
+		{
+			second_half = slow_seek->next;
+			break;
+		}
+
+		if (fast_seek->next == NULL)
+		{
+			second_half = slow_seek->next->next;
+			free(slow_seek->next);
+			break;
+		}
+
+		slow_seek = slow_seek->next;
+	}
+	slow_seek->next = NULL;
+
+	second_half = reverse_list(&second_half);
+	while (first_half)
+	{
+		if (first_half->n != second_half->n)
 			return (0);
+
+		first_half = first_half->next;
+		second_half = second_half->next;
 	}
 
 	return (1);
@@ -41,44 +62,20 @@ listint_t *reverse_list(listint_t **h)
 
 	while (current)
 	{
-		/*hold the previous value which starts from NULL (new tail)*/
+		/* hold the next node for following iteration */
 		next = current->next;
 
-		/*change the next node of the current node to the previous node*/
+		/* change the next node of the current node to the previous node */
 		current->next = previous;
 
-		/*update previous to the current node*/
+		/* update previous to the current node */
 		previous = current;
 
-		/*update current to the next node which was kept initially*/
+		/* update current to the next node which was kept initially */
 		current = next;
 	}
 
-	return (current);
-}
-
-/**
- * trav_to - traverses a linked list to a particular index
- * @h: head of linked list
- * @idx: index to traverse to
- * Return: pointer to node at i
-*/
-listint_t *trav_to(listint_t *h, size_t idx)
-{
-	size_t i;
-	listint_t *tmp;
-
-	tmp = h;
-	i = 0;
-	while (tmp)
-	{
-		if (i++ == idx)
-			break;
-
-		tmp = tmp->next;
-	}
-
-	return (tmp);
+	return (previous);
 }
 
 /**
@@ -86,9 +83,9 @@ listint_t *trav_to(listint_t *h, size_t idx)
  * @h: head of linked list
  * Return: number of nodes in list
 */
-size_t listint_len(listint_t *h)
+unsigned int listint_len(listint_t *h)
 {
-	size_t count;
+	unsigned int count;
 	listint_t *tmp;
 
 	tmp = h;
