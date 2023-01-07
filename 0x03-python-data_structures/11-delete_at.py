@@ -2,7 +2,7 @@
 def delete_at(my_list=[], idx=0):
     if not isinstance(my_list, list):
         return None
-    
+
     my_list_len = len(my_list)
     if idx < 0 or idx > (my_list_len - 1):
         return my_list
