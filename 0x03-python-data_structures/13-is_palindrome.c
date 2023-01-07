@@ -14,20 +14,19 @@ int is_palindrome(listint_t **head)
 		return (1);
 
 	list_len = listint_len(*head) - 1;
+	half_list_len = list_len / 2;
 
 	fore = *head;
 	hind = trav_to(*head, list_len);
-	tmp = *head;
+	tmp = trav_to(*head, half_list_len);
 
-	half_list_len = list_len / 2;
 	while (fore && list_len > half_list_len)
 	{
 		if (fore->n != hind->n)
 			return (0);
 
-		list_len -= 1;
 		fore = fore->next;
-		hind = trav_to(tmp, list_len);
+		hind = trav_to(tmp, half_list_len--);
 	}
 
 	return (1);
