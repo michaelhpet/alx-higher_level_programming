@@ -25,7 +25,7 @@ class Square:
     def __str__(self):
         """string representation of instance"""
         if self.size == 0:
-            return "\n"
+            return ""
         lines = []
         for i in range(self.position[1]):
             lines.append("")
