@@ -7,6 +7,7 @@ class Square:
     """Defines a Square
     Attributes:
         size (int): size of the Square
+        position (tuple): position of the Square
     """
     def __init__(self, size=0, position=(0, 0)):
         """Initializes a Square instance
@@ -56,7 +57,7 @@ class Square:
         Raises:
             TypeError: position must be a tuple of 2 positive integers
         """
-        is_tuple = isinstance(value, tuple)
+        is_tuple = isinstance(value, tuple) and len(tuple) == 2
         are_ints = all(isinstance(i, int) for i in value)
         are_positive = all(i >= 0 for i in value)
         if is_tuple and are_ints and are_positive:
