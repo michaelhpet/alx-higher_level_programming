@@ -6,7 +6,10 @@ import math
 class MagicClass:
     """Blueprint for Magic"""
     def __init__(self, radius=0):
-        """Initializes a MagicClass instance"""
+        """Initializes a MagicClass instance
+        Args:
+            radius (int, float): radius attribute of MagicClass instance
+        """
         if type(radius) is not int:
             if type(radius) is not float:
                 raise TypeError('radius must be a number')
@@ -14,8 +17,8 @@ class MagicClass:
 
     def area(self):
         """Computes the area of a MagicClass instance"""
-        return (getattr(self, self.__radius) ** 2) * (getattr(math, pi))
+        return (getattr(self, '__radius') ** 2) * (getattr(math, 'pi'))
 
     def circumference(self):
         """Computes the circumference of a MagicClass instance"""
-        return (2 * getattr(math, pi) * getattr(self, self.__radius))
+        return (2 * getattr(math, 'pi') * getattr(self, '__radius'))
