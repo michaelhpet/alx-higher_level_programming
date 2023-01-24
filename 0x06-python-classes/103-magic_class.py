@@ -17,8 +17,8 @@ class MagicClass:
 
     def area(self):
         """Computes the area of a MagicClass instance"""
-        return (getattr(self, '__radius') ** 2) * (getattr(math, 'pi'))
+        return (self.__radius ** 2) * math.pi
 
     def circumference(self):
         """Computes the circumference of a MagicClass instance"""
-        return (2 * getattr(math, 'pi') * getattr(self, '__radius'))
+        return 2 * math.pi * self.__radius
