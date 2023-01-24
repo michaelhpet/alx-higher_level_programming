@@ -21,7 +21,7 @@ class Square:
         """
         self.size = size
         self.position = position
-    
+
     def __str__(self):
         """string representation of instance"""
         if self.size == 0:
