@@ -1,0 +1,82 @@
+=================
+Dividing a matrix
+=================
+
+These are test cases for ``matrix_divided`` which returns a matrix
+containing division results of all elements in an original matrix.
+
+Args:
+    matrix (list): list of lists of equal length
+    div (int, float): divisor
+Returns:
+    list: a new_matrix of divided matrix elements
+Raises:
+    TypeError:
+        - matrix must be a matrix (list of lists) of integers/floats
+        - Each row of the matrix must have the same size
+        - div must be a number
+Description:
+    All elements of the matrix are divided by ``div`` and rounded to
+    2 decimal places
+
+Usage Examples:
+==============
+
+>>> matrix_divided = __import__('2-matrix_divided').matrix_divided
+
+>>> matrix = [
+...    [1, 2, 3],
+...    [4, 5, 6]
+... ]
+>>> matrix_divided(matrix, 3)
+[[0.33, 0.67, 1.0], [1.33, 1.67, 2.0]]
+
+>>> matrix = [
+...    [0, 12, 13],
+...    [40, -5, 6]
+... ]
+>>> matrix_divided(matrix, 3)
+[[0.0, 4.0, 4.33], [13.33, -1.67, 2.0]]
+
+>>> matrix = [
+...    [0, 0, 0],
+...    [41, 18, 1]
+... ]
+>>> matrix_divided(matrix, 12)
+[[0.0, 0.0, 0.0], [3.42, 1.5, 0.08]]
+
+>>> matrix = [
+...    '[1, 2, 0]',
+...    [4, 5, 6]
+... ]
+>>> matrix_divided(matrix, 3)
+Traceback (most recent call last):
+...
+TypeError: matrix must be a matrix (list of lists) of integers/floats
+
+>>> matrix = [
+...    [1, 2],
+...    [4, 5, 6]
+... ]
+>>> matrix_divided(matrix, 3)
+Traceback (most recent call last):
+...
+TypeError: Each row of the matrix must have the same size
+
+>>> matrix = [
+...    [1, 2, 0],
+...    [4, 5, 6]
+... ]
+>>> matrix_divided(matrix, '3')
+Traceback (most recent call last):
+...
+TypeError: div must be a number
+
+>>> matrix = [
+...    [1, 2, 0],
+...    [4, 5, 6]
+... ]
+>>> matrix_divided(matrix, 0)
+Traceback (most recent call last):
+...
+ZeroDivisionError: division by zero

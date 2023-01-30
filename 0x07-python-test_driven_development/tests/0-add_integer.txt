@@ -1,0 +1,40 @@
+===============================
+Integer addition of two numbers
+===============================
+
+This is a simple function to compute the summation of two integers (or floats).
+The result is the integer addition of the two numbers.
+That is, if each number is a float, it is first converted to an int before addition.
+
+The function raises a type error if any of the arguments is not an integer or a float.
+
+Usage Examples:
+>>> add_integer = __import__('0-add_integer').add_integer
+
+>>> add_integer(5, 8)
+13
+
+>>> add_integer(-8, 2.4)
+-6
+
+>>> add_integer(0, -0)
+0
+
+>>> add_integer(-1, -1)
+-2
+
+>>> add_integer(1, 0.0)
+1
+
+>>> add_integer(8.5, 8.7)
+16
+
+>>> add_integer('10', 15)
+Traceback (most recent call last):
+...
+TypeError: a must be an integer
+
+>>> add_integer(15, [280])
+Traceback (most recent call last):
+...
+TypeError: b must be an integer
