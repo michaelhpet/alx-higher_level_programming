@@ -27,8 +27,8 @@ class Rectangle:
             str: string drawing of rectangle
         """
         if self.width == 0 or self.height == 0:
-            return "\n".join(["#" * self.width for _ in self.height])
-        return join()
+            return ""
+        return "\n".join(["#" * self.width for _ in range(self.height)])
 
     @property
     def width(self):
