@@ -1,8 +1,9 @@
 #!/usr/bin/python3
-"""Module for working with matrix multiplication"""
+"""Using Numpy to compute the product of two matrices"""
+import numpy
 
 
-def matrix_mul(m_a, m_b):
+def lazy_matrix_mul(m_a, m_b):
     """Multiplies two matrices
     Args:
         m_a (list): list of lists of integers or floats
@@ -57,32 +58,4 @@ def matrix_mul(m_a, m_b):
     if m_a_cols != m_b_rows:
         raise ValueError("m_a and m_b can't be multiplied")
 
-    m_product = []
-    for row in m_a:
-        m_product_row = []
-        for index in range(m_b_cols):
-            m_b_reversed = reverse_matrix(m_b)
-            m_product_row_element = 0
-            for x, y in zip(row, m_b_reversed[index]):
-                m_product_row_element += x * y
-            m_product_row.append(m_product_row_element)
-        m_product.append(m_product_row)
-
-    return m_product
-
-
-def reverse_matrix(matrix):
-    """Reverses a matrix
-    Args:
-        matrix (list): matrix to reverse
-    Returns:
-        list: a new reversed matrix
-    """
-    matrix_reversed = []
-    for index in range(len(matrix)):
-        row_reversed = []
-        for row in matrix:
-            row_reversed.append(row[index])
-        matrix_reversed.append(row_reversed)
-
-    return matrix_reversed
+    return numpy.matmul(m_a, m_b).tolist()
