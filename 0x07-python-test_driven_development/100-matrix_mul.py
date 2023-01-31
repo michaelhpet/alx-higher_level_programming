@@ -45,28 +45,43 @@ def matrix_mul(m_a, m_b):
     if not all(isinstance(el, (int, float)) for row in m_b for el in row):
         raise TypeError('m_b should contain only integers or floats')
 
-    m_a_size = len(m_a[0])
-    if not all(len(row) == m_a_size for row in m_a):
+    m_a_cols = len(m_a[0])
+    if not all(len(row) == m_a_cols for row in m_a):
         raise TypeError('each row of m_a must be of the same size')
-    m_b_size = len(m_b[0])
-    if not all(len(row) == m_b_size for row in m_b):
+    m_b_cols = len(m_b[0])
+    if not all(len(row) == m_b_cols for row in m_b):
         raise TypeError('each row of m_b must be of the same size')
 
-    if len(m_a) != m_b_size:
+    m_a_rows = len(m_a)
+    m_b_rows = len(m_b)
+    if m_a_cols != m_b_rows:
         raise ValueError("m_a and m_b can't be multiplied")
 
-    m_a_reversed = []
-    for index in range(len(m_a)):
-        row_reversed = []
-        for row in m_a:
-            row_reversed.append(row[index])
-        m_a_reversed.append(row_reversed)
-
     m_product = []
-    for index in range(len(m_a_reversed)):
-        row_product = []
-        for x, y in zip(m_a_reversed[index], m_b[index]):
-            row_product.append(x * y)
-        m_product.append(row_product)
+    for row in m_a:
+        m_product_row = []
+        for index in range(m_b_cols):
+            m_b_reversed = reverse_matrix(m_b)
+            m_product_row_element = 0
+            for x, y in zip(row, m_b_reversed[index]):
+                m_product_row_element += x * y
+            m_product_row.append(m_product_row_element)
+        m_product.append(m_product_row)
 
     return m_product
+
+def reverse_matrix(matrix):
+    """Reverses a matrix
+    Args:
+        matrix (list): matrix to reverse
+    Returns:
+        list: a new reversed matrix
+    """
+    matrix_reversed = []
+    for index in range(len(matrix)):
+        row_reversed = []
+        for row in matrix:
+            row_reversed.append(row[index])
+        matrix_reversed.append(row_reversed)
+
+    return matrix_reversed
