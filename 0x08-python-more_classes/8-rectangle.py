@@ -102,6 +102,10 @@ class Rectangle:
             TypeError:
                 - rect_1 must be an instance of Rectangle
                 - rect_2 must be an instance of Rectangle
+        Description:
+            Function returns the bigger rectangle.
+            However, in a situation where both rectangles are equal,
+            rect_1 is returned
         """
         if not isinstance(rect_1, Rectangle):
             raise TypeError('rect_1 must be an instance of Rectangle')
