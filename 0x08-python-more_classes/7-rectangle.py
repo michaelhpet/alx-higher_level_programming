@@ -30,9 +30,10 @@ class Rectangle:
         Returns:
             str: string drawing of rectangle
         """
+        symbol = str(self.print_symbol)
         if self.width == 0 or self.height == 0:
             return ""
-        return "\n".join([str(Rectangle.print_symbol) * self.width for _ in range(self.height)])
+        return "\n".join([symbol * self.width for _ in range(self.height)])
 
     def __repr__(self):
         """Formal string representation of rectangle
