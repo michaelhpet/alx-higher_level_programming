@@ -1,0 +1,25 @@
+=========================================================
+Function to print ``My name is <first_name> <last_name>``
+=========================================================
+
+Expected to work with a string first_name and an optional string last_name
+
+Usage Examples:
+===============
+
+>>> say_my_name = __import__('3-say_my_name').say_my_name
+>>> say_my_name('Michael')
+My name is Michael 
+
+>>> say_my_name('Michael', 'Peter')
+My name is Michael Peter
+
+>>> say_my_name(0)
+Traceback (most recent call last):
+...
+TypeError: first_name must be a string
+
+>>> say_my_name('Michael', 0)
+Traceback (most recent call last):
+...
+TypeError: last_name must be a string
