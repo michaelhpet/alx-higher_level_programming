@@ -16,7 +16,7 @@ def text_indentation(text):
     for i, character in enumerate(text):
         if character in delimiters:
             print(character, end="")
-            print('\n') # 2 new lines because print() adds another
+            print('\n')  # 2 new lines because print() adds another
             continue
         if character == ' ' and text[i - 1] in delimiters:
             continue
