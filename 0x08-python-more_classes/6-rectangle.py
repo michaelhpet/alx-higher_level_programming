@@ -22,7 +22,7 @@ class Rectangle:
         """
         self.width = width
         self.height = height
-        number_of_instances += 1
+        Rectangle.number_of_instances += 1
 
     def __str__(self):
         """Informal string representation of rectangle
@@ -44,7 +44,7 @@ class Rectangle:
         """Finalizes a rectangle object when reference count is 0
         """
         print('Bye rectangle...')
-        number_of_instances -= 1
+        Rectangle.number_of_instances -= 1
 
     @property
     def width(self):
