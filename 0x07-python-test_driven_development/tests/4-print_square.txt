@@ -1,0 +1,39 @@
+==============================
+Test for function print_square
+==============================
+
+Function is expected to print a square of given size using #
+
+Usage Examples
+==============
+
+>>> print_square = __import__('4-print_square').print_square
+
+>>> print_square(3)
+###
+###
+###
+
+>>> print_square(0)
+
+>>> print_square(5)
+#####
+#####
+#####
+#####
+#####
+
+>>> print_square(-0.1)
+Traceback (most recent call last):
+...
+TypeError: size must be an integer
+
+>>> print_square('9')
+Traceback (most recent call last):
+...
+TypeError: size must be an integer
+
+>>> print_square(-2)
+Traceback (most recent call last):
+...
+ValueError: size must be >= 0
