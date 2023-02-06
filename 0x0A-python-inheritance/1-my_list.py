@@ -1,9 +1,13 @@
 #!/usr/bin/python3
-"""Python inheritance"""
+"""
+Python inheritance
+"""
 
 
 class MyList(list):
-    """Subclass of list"""
+    """
+    Subclass of list
+    """
 
     def __init__(self):
         """Initialized a MyList instance"""
