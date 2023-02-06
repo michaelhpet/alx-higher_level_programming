@@ -1,9 +1,9 @@
-#!/usr/python3
+#!/usr/bin/python3
 """Adding attributes to objects if possible"""
 
 
 def add_attribute(an_object, key, value):
-    """adds a new attribute to an object if possible
+    """Adds a new attribute to an object if possible
     Args:
         an_object (object): object to add attribute to
         key (string): attribute key
