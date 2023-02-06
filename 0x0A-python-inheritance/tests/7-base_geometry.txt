@@ -2,8 +2,37 @@
 Tests BaseGeometry.integer_validator
 ====================================
 
-Usage Examples:
-===============
+Documentation:
+==============
+
+------------------------------------------------
+
+>>> module_doc = __import__('7-base_geometry').__doc__
+>>> len(module_doc) > 1
+True
+
+------------------------------------------------
+
+>>> class_doc = __import__('7-base_geometry').BaseGeometry.__doc__
+>>> len(class_doc) > 1
+True
+
+------------------------------------------------
+
+>>> method_doc = __import__('7-base_geometry').BaseGeometry.area.__doc__
+>>> len(method_doc) > 1
+True
+
+------------------------------------------------
+
+>>> method_doc = __import__('7-base_geometry').BaseGeometry.integer_validator.__doc__
+>>> len(method_doc) > 1
+True
+
+------------------------------------------------
+
+Usage:
+======
 
 >>> BaseGeometry = __import__('7-base_geometry').BaseGeometry
 >>> bg = BaseGeometry()
