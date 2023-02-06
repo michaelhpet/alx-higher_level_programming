@@ -5,7 +5,7 @@
 def inherits_from(obj, a_class):
     """Returns true if an object is an instance of
     a class that inherited (directly or indirectly)
-    from the specified class, otherwise False
+    the specified class, otherwise False
     Args:
         obj (object): an instance of any class
         a_class (object): a class
