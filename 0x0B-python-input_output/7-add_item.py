@@ -20,8 +20,8 @@ def main():
 
     arguments = argv[1:]
     to_save = existing + arguments
-    save_to_json(existing, filename)
+    save_to_json(to_save, filename)
 
 
-if __name__ = "__main__":
+if __name__ == "__main__":
     main()
