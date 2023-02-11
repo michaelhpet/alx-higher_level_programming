@@ -2,7 +2,7 @@
 """Working with input/output in Python"""
 
 
-def write_file(filename="", text=""):
+def append_write(filename="", text=""):
     """Appends a string at the end of a text file (utf-8)
     Args:
         filename (str): name of file to write to
