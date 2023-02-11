@@ -18,8 +18,9 @@ class Student:
         """Retrieve a dictionary representation of a Student instance
         """
         to_retrieve = self.__dict__
-        if (isinstance(attrs, list) and \
-            all(isinstance(el, str) for el in attrs)):
-            f = lambda item: item[0] in attrs
+        if (isinstance(attrs, list) and
+                all(isinstance(el, str) for el in attrs)):
+            def f(item):
+                return item[0] in attrs
             to_retrieve = dict(filter(f, to_retrieve.items()))
         return to_retrieve
