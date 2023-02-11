@@ -29,7 +29,8 @@ class Student:
         """Replaces all attributes of Student instance
         """
         def f(item):
+            item = list(item)
             item[1] = json[item[0]]
-            return item
-        new_dict = dict(map(f, self.__dict__))
+            return tuple(item)
+        new_dict = dict(map(f, self.__dict__.items()))
         self.__dict__ = new_dict
