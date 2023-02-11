@@ -20,6 +20,8 @@ def main():
 
     arguments = argv[1:]
     to_save = existing + arguments
+    save_to_json(existing, filename)
 
-    with open(filename, "w", encoding="utf-8") as file:
-        save_to_json(existing, filename)
+
+if __name__ = "__main__":
+    main()
