@@ -28,9 +28,4 @@ class Student:
     def reload_from_json(self, json):
         """Replaces all attributes of Student instance
         """
-        def f(item):
-            item = list(item)
-            item[1] = json[item[0]]
-            return tuple(item)
-        new_dict = dict(map(f, self.__dict__.items()))
-        self.__dict__ = new_dict
+        self.__dict__.update(json)
