@@ -10,4 +10,4 @@ def from_json_string(my_str):
         object: object represented by my_str
     """
     import json
-    return json.parse(my_str)
+    return json.loads(my_str)
