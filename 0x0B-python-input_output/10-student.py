@@ -18,7 +18,8 @@ class Student:
         """Retrieve a dictionary representation of a Student instance
         """
         to_retrieve = self.__dict__
-        if attrs is not None:
+        if (isinstance(list, attr) and \
+            all(isinstance(str, el) for el in attr)):
             f = lambda item: item[0] in attrs
             to_retrieve = dict(filter(f, to_retrieve.items()))
         return to_retrieve
