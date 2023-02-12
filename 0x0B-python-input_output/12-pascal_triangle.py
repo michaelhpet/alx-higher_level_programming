@@ -12,7 +12,7 @@ def pascal_triangle(n):
         return []
 
     p_triangle = [[1]]
-    while len(triangle) != n:
+    while len(p_triangle) != n:
         prev_row = p_triangle[-1]
         new_row = [1]
         for i in range(len(prev_row) - 1):
