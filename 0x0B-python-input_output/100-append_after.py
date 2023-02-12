@@ -16,4 +16,6 @@ def append_after(filename="", search_string="", new_string=""):
             to_write += line
             if search_string in line:
                 to_write += new_string
+
+    with open(filename, "w", encoding="utf-8") as file:
         file.write(to_write)
