@@ -1,6 +1,8 @@
 #!/usr/bin/python3
 """Base class module."""
 import json
+import csv
+import turtle
 
 
 class Base:
@@ -79,3 +81,71 @@ class Base:
                 return [cls.create(**dict) for dict in list_dictionaries]
         except FileNotFoundError:
             return []
+
+    @classmethod
+    def save_to_file_csv(cls, list_objs):
+        """Serialize list of objects and save to CSV file.
+
+        Args:
+            list_objs (list): List of [inherited] instances of Base class.
+        """
+        list_dictionaries = [obj.to_dictionary() for obj in list_objs]
+        with open("{:s}.csv".format(cls.__name__), "w") as file:
+            if len(list_dictionaries) == 0:
+                file.write("[]")
+            else:
+                fieldnames_dict = {
+                    "Rectangle": ["id", "width", "height", "x", "y"],
+                    "Square": ["id", "size", "x", "y"]
+                }
+                fieldnames = fieldnames_dict[cls.__name__]
+                writer = csv.DictWriter(file, fieldnames=fieldnames)
+                for row in list_dictionaries:
+                    writer.writerow(row)
+
+    @classmethod
+    def load_from_file_csv(cls):
+        """Create a list of instances from deserialized CSV file."""
+        try:
+            with open("{:s}.csv".format(cls.__name__), "r") as file:
+                fieldnames_dict = {
+                    "Rectangle": ["id", "width", "height", "x", "y"],
+                    "Square": ["id", "size", "x", "y"]
+                }
+                fieldnames = fieldnames_dict[cls.__name__]
+
+                reader = csv.DictReader(file, fieldnames=fieldnames)
+                list_dictionaries = [dict((key, int(value))
+                                          for key, value in row.items())
+                                     for row in reader]
+
+                return [cls.create(**dictionary)
+                        for dictionary in list_dictionaries]
+
+        except FileNotFoundError:
+            return []
+
+    @staticmethod
+    def draw(list_rectangles, list_squares):
+        """Open a window and draw Rectangles and Squares.
+
+        Args:
+            list_rectangles (list): List of Rectangle objects to draw
+            list_squares (list): List of Square objects to draw
+        """
+        graph = turtle.Turtle()
+        graph.speed(2)
+
+        for rectangle in list_rectangles + list_squares:
+            graph.goto(rectangle.x, rectangle.y)
+            graph.setheading(0)
+
+            graph.forward(rectangle.width)
+            graph.right(90)
+            graph.forward(rectangle.height)
+            graph.right(90)
+            graph.forward(rectangle.width)
+            graph.right(90)
+            graph.forward(rectangle.height)
+
+        turtle.done()

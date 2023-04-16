@@ -204,6 +204,35 @@ class TestSquareMethods(unittest.TestCase):
             self.assertDictEqual(list_squares_input[entry[0]].to_dictionary(),
                                  entry[1].to_dictionary())
 
+    def test_to_from_file_csv(self):
+        """Test [save to]/[load from] csv file method."""
+        filename = "Square.csv"
+        try:
+            os.remove(filename)
+        except FileNotFoundError:
+            pass
+
+        self.assertListEqual([], Square.load_from_file_csv())
+
+        s1 = Square(5)
+        s2 = Square(7, 9, 1)
+        list_squares_input = [s1, s2]
+
+        Square.save_to_file_csv(list_squares_input)
+
+        list_squares_output = Square.load_from_file_csv()
+
+        self.assertEqual(2, len(list_squares_output))
+
+        for obj in list_squares_output:
+            self.assertIsInstance(obj, Square)
+
+        for entry in enumerate(list_squares_output):
+            self.assertDictEqual(
+                list_squares_input[entry[0]].to_dictionary(),
+                entry[1].to_dictionary())
+        os.remove(filename)
+
 
 if __name__ == "__main__":
     unittest.main()

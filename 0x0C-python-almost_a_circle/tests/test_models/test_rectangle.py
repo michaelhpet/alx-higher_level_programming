@@ -203,6 +203,36 @@ class TestRectangleMethods(unittest.TestCase):
                 list_rectangles_input[entry[0]].to_dictionary(),
                 entry[1].to_dictionary())
 
+    def test_to_from_file_csv(self):
+        """Test [save to]/[load from] csv file method."""
+        filename = "Rectangle.csv"
+        try:
+            os.remove(filename)
+        except FileNotFoundError:
+            pass
+
+        self.assertListEqual([], Rectangle.load_from_file_csv())
+
+        r1 = Rectangle(10, 7, 2, 8)
+        r2 = Rectangle(2, 4)
+        list_rectangles_input = [r1, r2]
+
+        Rectangle.save_to_file_csv(list_rectangles_input)
+
+        list_rectangles_output = Rectangle.load_from_file_csv()
+
+        self.assertEqual(2, len(list_rectangles_output))
+
+        for obj in list_rectangles_output:
+            self.assertIsInstance(obj, Rectangle)
+
+        for entry in enumerate(list_rectangles_output):
+            self.assertDictEqual(
+                list_rectangles_input[entry[0]].to_dictionary(),
+                entry[1].to_dictionary())
+
+        os.remove(filename)
+
 
 if __name__ == "__main__":
     unittest.main()
