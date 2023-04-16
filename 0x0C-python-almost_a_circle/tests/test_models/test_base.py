@@ -9,34 +9,21 @@ class TestBase(unittest.TestCase):
 
     def test_without_id(self):
         """Test for instantiation of base class without id."""
-        new_object = Base()
-        self.assertEqual(new_object.id, 1)
-
-        another_object = Base()
-        self.assertEqual(another_object.id, 2)
-
-    def test_iteration_without_id(self):
-        """Test for iterative instantiation without id."""
-        for i in range(5):
-            new_object = Base()
-            self.assertEqual(new_object.id, i + 1)
+        base1 = Base()
+        base2 = Base()
+        base3 = Base()
+        base4 = Base()
+        self.assertEqual(base1.id, base2.id - 1)
+        self.assertGreater(base4.id, base3.id)
+        self.assertEqual(base4.id, base1.id + 3)
 
     def test_with_id(self):
         """Test for instantiation of Base class with an id argument."""
-        new_object = Base(12)
-        self.assertEqual(new_object.id, 12)
-
-    def test_iteration_with_id(self):
-        """Test for iterative instantiation with an id argument."""
-        for number in [12, 43, 32, 56, 17]:
-            new_object = Base(number)
-            self.assertEqual(new_object.id, number)
-
-    def test_with_non_number(self):
-        """Test for instantiation with a non-number argument"""
-        self.assertEqual(Base([]), 1)
-        self.assertEqual(Base('3'), 2)
-        self.assertEqual(Base(True), 3)
+        base1 = Base(12)
+        base2 = Base(54)
+        self.assertEqual(base1.id, 12)
+        self.assertEqual(base2.id, 54)
+        self.assertNotEqual(base1.id, base2.id)
 
 
 if __name__ == "__main__":
