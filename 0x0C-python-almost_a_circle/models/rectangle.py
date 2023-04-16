@@ -121,6 +121,7 @@ class Rectangle(Base):
                 - height (int): New height of rectangle
                 - x (int): New x coordinate of rectangle
                 - y (int): New y coordinate of rectangle
+            **kwargs (Dict<str, int>): keyworded arguments of update values
         """
         attributes = ["id", "width", "height", "x", "y"]
         for entry in enumerate(args):

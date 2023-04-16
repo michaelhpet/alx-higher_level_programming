@@ -71,8 +71,8 @@ class TestRectangleInstance(unittest.TestCase):
             Rectangle(12, 34, -0.5, -11)
 
     def test_wrong_types(self):
-        """Rectangle object initialization with non-integer width
-        height, x, and y arguments.
+        """Rectangle object initialization with invalid width
+        height, x, and y integer values.
         """
         with self.assertRaises(TypeError):
             Rectangle(2.3, 4.5)
@@ -122,7 +122,7 @@ class TestRectangleMethods(unittest.TestCase):
         self.assertEqual(Rectangle(8, 7, 0, 0, 2).area(), 56)
 
     def test_display(self):
-        """Test the display of Rectanfle object in stdout."""
+        """Test the display of Rectangle object in stdout."""
         tmpout = StringIO()
         sys.stdout = tmpout
 
