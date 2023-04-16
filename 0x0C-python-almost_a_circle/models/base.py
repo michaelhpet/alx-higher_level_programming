@@ -27,14 +27,33 @@ class Base:
 
     @staticmethod
     def to_json_string(list_dictionaries):
-        """Get JSON representation of a list of dictionaries."""
+        """Get JSON representation of a list of dictionaries.
+
+        Args:
+            list_dictionaries (list): List of dictionaries
+        """
         if list_dictionaries is None or len(list_dictionaries) == 0:
             return "[]"
         return json.dumps(list_dictionaries)
 
     @classmethod
     def save_to_file(cls, list_objs):
-        """Write JSON string to file."""
+        """Write JSON string representation of objects to file.
+
+        Args:
+            list_objs (list): List of objects
+        """
         list_dictionaries = [obj.to_dictionary() for obj in list_objs]
         with open("{:s}.json".format(cls.__name__), "w") as file:
             file.write(Base.to_json_string(list_dictionaries))
+
+    @staticmethod
+    def from_json_string(json_string):
+        """Get list of objects from JSON string.
+
+        Args:
+            json_string (str): String to parse
+        """
+        if json_string is None or json_string == "[]":
+            return []
+        return json.loads(json_string)
