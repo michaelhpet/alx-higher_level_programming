@@ -7,20 +7,21 @@ class Rectangle(Base):
     """Blueprint for rectangle objects.
 
     Attributes:
-        width (int, float): Width of rectangle
-        height (int, float): Height of rectangle
-        x (int, float): X coordinate of rectangle
-        y (int, float): Y coordinate of rectangle
+        width (int): Width of rectangle
+        height (int): Height of rectangle
+        x (int): X coordinate of rectangle
+        y (int): Y coordinate of rectangle
+        id (int): Unique id of rectangle
     """
 
     def __init__(self, width, height, x=0, y=0, id=None):
         """Initialize a Rectangle.
 
         Args:
-            width (int, float): Width of rectangle
-            height (int, float): Height of rectangle
-            x (int, float): X coordinate of rectangle
-            y (int, float): Y coordinate of rectangle
+            width (int): Width of rectangle
+            height (int): Height of rectangle
+            x (int): X coordinate of rectangle
+            y (int): Y coordinate of rectangle
             id (int): Unique id of rectangle
 
         Raises:
@@ -125,7 +126,7 @@ class Rectangle(Base):
         for entry in enumerate(args):
             setattr(self, attributes[entry[0]], entry[1])
 
-        if len(args) == 0 and len(kwargs) > 0:
+        if len(args) == 0:
             for entry in kwargs.items():
                 setattr(self, entry[0], entry[1])
 
