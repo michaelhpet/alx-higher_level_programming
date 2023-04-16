@@ -110,6 +110,21 @@ class Rectangle(Base):
                 print(" ", end="")
             print("#" * self.width)
 
+    def update(self, *args):
+        """Update dimensions and coordinates.
+
+        Args:
+            *args (int[]): list of update values
+                - id (int): New unique id attribute
+                - width (int): New width of rectangle
+                - height (int): New height of rectangle
+                - x (int): New x coordinate of rectangle
+                - y (int): New y coordinate of rectangle
+        """
+        attributes = ["id", "width", "height", "x", "y"]
+        for entry in enumerate(args):
+            setattr(self, attributes[entry[0]], entry[1])
+
     def __str__(self):
         """Get informal string representation of Rectangle object."""
         return "[Rectangle] ({:d}) {:d}/{:d} - {:d}/{:d}".format(self.id,

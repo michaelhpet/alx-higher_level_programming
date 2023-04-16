@@ -3,6 +3,8 @@
 import unittest
 from models.rectangle import Rectangle
 from models.base import Base
+from io import StringIO
+import sys
 
 
 class TestRectangleInstance(unittest.TestCase):
@@ -110,14 +112,37 @@ class TestRectangleInstance(unittest.TestCase):
             Rectangle(10, 0)
 
 
-class TestRectangleGeometry(unittest.TestCase):
-    """Unit tests for geometry of Rectangle instance."""
+class TestRectangleMethods(unittest.TestCase):
+    """Unit tests for method functionality of Rectangle instance."""
 
     def test_area(self):
         """Test the area of Rectangle instance."""
         self.assertEqual(Rectangle(3, 2).area(), 6)
         self.assertEqual(Rectangle(2, 10).area(), 20)
         self.assertEqual(Rectangle(8, 7, 0, 0, 2).area(), 56)
+
+    def test_display(self):
+        """Test the display of Rectanfle object in stdout."""
+        tmpout = StringIO()
+        sys.stdout = tmpout
+
+        r1 = Rectangle(2, 3, 2, 2)
+        r1.display()
+        self.assertEqual(tmpout.getvalue(), "\n\n  ##\n  ##\n  ##\n")
+
+        sys.stdout = sys.__stdout__
+
+    def test_update(self):
+        """Test the update method of Rectangle instance."""
+        tmpout = StringIO()
+        sys.stdout = tmpout
+
+        r1 = Rectangle(10, 10, 10, 10)
+        r1.update(89)
+        print(r1)
+        self.assertEqual(tmpout.getvalue(), "[Rectangle] (89) 10/10 - 10/10\n")
+
+        sys.stdout = sys.__stdout__
 
 
 if __name__ == "__main__":
