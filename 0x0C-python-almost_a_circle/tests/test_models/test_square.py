@@ -177,6 +177,33 @@ class TestSquareMethods(unittest.TestCase):
 
         self.assertDictEqual(s1_dictionary, s2_dictionary)
 
+    def test_load_from_file(self):
+        """Test load_from_file method."""
+        filename = "Square.json"
+        try:
+            os.remove(filename)
+        except FileNotFoundError:
+            pass
+
+        self.assertListEqual([], Square.load_from_file())
+
+        s1 = Square(5)
+        s2 = Square(7, 9, 1)
+        list_squares_input = [s1, s2]
+
+        Square.save_to_file(list_squares_input)
+
+        list_squares_output = Square.load_from_file()
+
+        self.assertEqual(2, len(list_squares_output))
+
+        for obj in list_squares_output:
+            self.assertIsInstance(obj, Square)
+
+        for entry in enumerate(list_squares_output):
+            self.assertDictEqual(list_squares_input[entry[0]].to_dictionary(),
+                                 entry[1].to_dictionary())
+
 
 if __name__ == "__main__":
     unittest.main()

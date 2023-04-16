@@ -175,6 +175,34 @@ class TestRectangleMethods(unittest.TestCase):
 
         self.assertDictEqual(r1_dictionary, r2_dictionary)
 
+    def test_load_from_file(self):
+        """Test load_from_file method."""
+        filename = "Rectangle.json"
+        try:
+            os.remove(filename)
+        except FileNotFoundError:
+            pass
+
+        self.assertListEqual([], Rectangle.load_from_file())
+
+        r1 = Rectangle(10, 7, 2, 8)
+        r2 = Rectangle(2, 4)
+        list_rectangles_input = [r1, r2]
+
+        Rectangle.save_to_file(list_rectangles_input)
+
+        list_rectangles_output = Rectangle.load_from_file()
+
+        self.assertEqual(2, len(list_rectangles_output))
+
+        for obj in list_rectangles_output:
+            self.assertIsInstance(obj, Rectangle)
+
+        for entry in enumerate(list_rectangles_output):
+            self.assertDictEqual(
+                list_rectangles_input[entry[0]].to_dictionary(),
+                entry[1].to_dictionary())
+
 
 if __name__ == "__main__":
     unittest.main()
