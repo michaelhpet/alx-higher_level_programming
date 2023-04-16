@@ -26,43 +26,45 @@ class Rectangle(Base):
         super().__init__(id)
         self.width = width
         self.height = height
+        self.x = x
+        self.y = y
 
     @property
     def width(self):
-        """Get the width attribute of rectangle object."""
+        """Get/Set the width attribute of rectangle object."""
         return self.__width
 
     @width.setter
     def width(self, value):
-        """Set the width attribute of rectangle object."""
+        """Get/Set the width attribute of rectangle object."""
         self.__width = value
 
     @property
     def height(self):
-        """Get the height attribute of rectangle object."""
+        """Get/Set the height attribute of rectangle object."""
         return self.__height
 
     @height.setter
     def height(self, value):
-        """Set the height attribute of rectangle object."""
+        """Get/Set the height attribute of rectangle object."""
         self.__height = value
 
     @property
     def x(self):
-        """Get the x attribute of rectangle object."""
+        """Get/Set the x attribute of rectangle object."""
         return self.__x
 
     @x.setter
     def x(self, value):
-        """Set the x attribute of rectangle object."""
+        """Get/Set the x attribute of rectangle object."""
         self.__x = value
 
     @property
     def y(self):
-        """Get the y attribute of rectangle object."""
+        """Get/Set the y attribute of rectangle object."""
         return self.__y
 
     @y.setter
     def y(self, value):
-        """Set the y attribute of rectangle object."""
+        """Get/Set the y attribute of rectangle object."""
         self.__y = value

@@ -1,11 +1,11 @@
 #!/usr/bin/python3
-"""Test Base class."""
+"""Test module for Base class."""
 import unittest
 from models.base import Base
 
 
 class TestBase(unittest.TestCase):
-    """Test Base class."""
+    """Unit tests for base objects."""
 
     def test_without_id(self):
         """Test for instantiation of base class without id."""
