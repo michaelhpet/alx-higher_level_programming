@@ -57,3 +57,15 @@ class Base:
         if json_string is None or json_string == "[]":
             return []
         return json.loads(json_string)
+
+    @classmethod
+    def create(cls, **dictionary):
+        """Create an instance with all attributes already set.
+
+        Args:
+            dictionary (Dict<str, int>): Dictionary or keyworded arguments
+            to parse
+        """
+        dummy_obj = cls()
+        dummy_obj.update(**dictionary)
+        return dummy_obj
