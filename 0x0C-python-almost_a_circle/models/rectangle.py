@@ -110,7 +110,7 @@ class Rectangle(Base):
                 print(" ", end="")
             print("#" * self.width)
 
-    def update(self, *args):
+    def update(self, *args, **kwargs):
         """Update dimensions and coordinates.
 
         Args:
@@ -124,6 +124,10 @@ class Rectangle(Base):
         attributes = ["id", "width", "height", "x", "y"]
         for entry in enumerate(args):
             setattr(self, attributes[entry[0]], entry[1])
+
+        if len(args) == 0 and len(kwargs) > 0:
+            for entry in kwargs.items():
+                setattr(self, entry[0], entry[1])
 
     def __str__(self):
         """Get informal string representation of Rectangle object."""
