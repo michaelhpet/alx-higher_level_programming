@@ -14,7 +14,7 @@ class Rectangle(Base):
     """
 
     def __init__(self, width, height, x=0, y=0, id=None):
-        """Initialize a rectangle.
+        """Initialize a Rectangle.
 
         Args:
             width (int, float): Width of rectangle
@@ -22,12 +22,25 @@ class Rectangle(Base):
             x (int, float): X coordinate of rectangle
             y (int, float): Y coordinate of rectangle
             id (int): Unique id of rectangle
+
+        Raises:
+            TypeError: width, height, x, and y must be int
+            ValueError: width and height must be > 0
+            ValueError: x and y must be >= 0
         """
         super().__init__(id)
         self.width = width
         self.height = height
         self.x = x
         self.y = y
+
+    def area(self):
+        """Return the area value of the Rectangle instance.
+
+        Returns:
+            int: Area of Rectangle instance
+        """
+        return self.width * self.height
 
     @property
     def width(self):
