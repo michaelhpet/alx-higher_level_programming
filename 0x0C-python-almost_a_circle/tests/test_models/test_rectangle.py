@@ -114,6 +114,10 @@ class TestRectangleGeometry(unittest.TestCase):
         self.assertEqual(Rectangle(2, 10).area(), 20)
         self.assertEqual(Rectangle(8, 7, 0, 0, 2).area(), 56)
 
+    def test_display(self):
+        """Test the display of Rectangle instance."""
+        pass
+
 
 if __name__ == "__main__":
     unittest.main()
