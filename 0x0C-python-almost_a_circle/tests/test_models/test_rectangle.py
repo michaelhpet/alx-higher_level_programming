@@ -144,6 +144,12 @@ class TestRectangleMethods(unittest.TestCase):
 
         sys.stdout = sys.__stdout__
 
+    def test_to_dictionary(self):
+        """Test the to_dictionary method of Rectangle instance."""
+        rectangle1 = Rectangle(12, 9, 1, 3, 78)
+        self.assertEqual(rectangle1.to_dictionary(),
+                         {"id": 78, "width": 12, "height": 9, "x": 1, "y": 3})
+
 
 if __name__ == "__main__":
     unittest.main()

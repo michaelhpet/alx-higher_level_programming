@@ -146,6 +146,12 @@ class TestSquareMethods(unittest.TestCase):
 
         sys.stdout = sys.__stdout__
 
+    def test_to_dictionary(self):
+        """Test the to_dictionary method of Rectangle instance."""
+        square1 = Square(12, 1, 4, 101)
+        self.assertEqual(square1.to_dictionary(),
+                         {"id": 101, "size": 12, "x": 1, "y": 4})
+
 
 if __name__ == "__main__":
     unittest.main()

@@ -131,6 +131,16 @@ class Rectangle(Base):
             for entry in kwargs.items():
                 setattr(self, entry[0], entry[1])
 
+    def to_dictionary(self):
+        """Get the dictionary representation of a Rectangle."""
+        return {
+            "id": self.id,
+            "width": self.width,
+            "height": self.height,
+            "x": self.x,
+            "y": self.y
+        }
+
     def __str__(self):
         """Get informal string representation of Rectangle object."""
         return "[Rectangle] ({:d}) {:d}/{:d} - {:d}/{:d}".format(self.id,
