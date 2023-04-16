@@ -18,6 +18,58 @@ class TestRectangle(unittest.TestCase):
         rectangle1 = Rectangle(15, 12)
         self.assertIsInstance(rectangle1, Base)
 
+    def test_without_dimensions(self):
+        """Rectangle object initialization without width
+        or height arguments.
+        """
+        with self.assertRaises(TypeError):
+            Rectangle()
+        with self.assertRaises(TypeError):
+            Rectangle(10)
+        with self.assertRaises(TypeError):
+            Rectangle(None, 3)
+
+    def test_wrong_types(self):
+        """Rectangle object initialization with non-integer width
+        height, x, and y arguments.
+        """
+        with self.assertRaises(TypeError):
+            Rectangle(2.3, 4.5)
+
+        with self.assertRaises(TypeError):
+            Rectangle('10', 23)
+
+        with self.assertRaises(TypeError):
+            Rectangle(10, [8])
+
+        with self.assertRaises(TypeError):
+            Rectangle(3, 3, '0.2', '0.5')
+
+        with self.assertRaises(TypeError):
+            Rectangle(3, 3, 0.2, 0.5)
+
+    def test_wrong_values(self):
+        """Rectangle object initialization with non-integer width
+        height, x, and y arguments.
+        """
+        with self.assertRaises(ValueError):
+            Rectangle(0, 0, 0, 0)
+
+        with self.assertRaises(ValueError):
+            Rectangle(-1, -2, 8, 9)
+
+        with self.assertRaises(ValueError):
+            Rectangle(10, 11, 0, -2)
+
+        with self.assertRaises(ValueError):
+            Rectangle(2, 4, -1, 5)
+
+        with self.assertRaises(ValueError):
+            Rectangle(10, -21)
+
+        with self.assertRaises(ValueError):
+            Rectangle(10, 0)
+
     def test_coordinates(self):
         """Test for coordinates attributes."""
         rectangle1 = Rectangle(15, 10)
@@ -28,6 +80,12 @@ class TestRectangle(unittest.TestCase):
         self.assertEqual(rectangle2.x, 15)
         self.assertEqual(rectangle2.y, 71)
         self.assertNotEqual(rectangle2.x, rectangle2.y)
+
+        with self.assertRaises((ValueError, TypeError)):
+            Rectangle(10, 10, -2.5, 10)
+
+        with self.assertRaises((ValueError, TypeError)):
+            Rectangle(12, 34, -0.5, -11)
 
     def test_id(self):
         """Test for id attribute."""
