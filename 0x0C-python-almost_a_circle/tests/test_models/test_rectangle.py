@@ -18,6 +18,11 @@ class TestRectangleInstance(unittest.TestCase):
         rectangle1 = Rectangle(15, 12)
         self.assertIsInstance(rectangle1, Base)
 
+    def test_str(self):
+        """Test the informal representation of Rectangle object."""
+        rectangle1 = Rectangle(4, 6, 2, 1, 12)
+        self.assertEqual(rectangle1.__str__(), "[Rectangle] (12) 2/1 - 4/6")
+
     def test_id(self):
         """Test for id attribute."""
         for id in [12, 56, 8, 19]:
@@ -113,10 +118,6 @@ class TestRectangleGeometry(unittest.TestCase):
         self.assertEqual(Rectangle(3, 2).area(), 6)
         self.assertEqual(Rectangle(2, 10).area(), 20)
         self.assertEqual(Rectangle(8, 7, 0, 0, 2).area(), 56)
-
-    def test_display(self):
-        """Test the display of Rectangle instance."""
-        pass
 
 
 if __name__ == "__main__":

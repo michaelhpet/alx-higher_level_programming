@@ -103,5 +103,17 @@ class Rectangle(Base):
 
         Prints in stdout the Rectangle instance with the character #
         """
-        for unit in range(self.height):
+        for _ in range(self.y):
+            print("")
+        for _ in range(self.height):
+            for _ in range(self.x):
+                print(" ", end="")
             print("#" * self.width)
+
+    def __str__(self):
+        """Get informal string representation of Rectangle object."""
+        return "[Rectangle] ({:d}) {:d}/{:d} - {:d}/{:d}".format(self.id,
+                                                                 self.x,
+                                                                 self.y,
+                                                                 self.width,
+                                                                 self.height)
