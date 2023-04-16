@@ -134,12 +134,21 @@ class Base:
             list_squares (list): List of Square objects to draw
         """
         graph = turtle.Turtle()
+        graph.screen.bgcolor("#BCBCBC")
+        graph.shape("circle")
+        graph.color("black")
+        graph.fillcolor("#1E1E1E")
+        graph.pensize(2)
         graph.speed(2)
 
         for rectangle in list_rectangles + list_squares:
             graph.goto(rectangle.x, rectangle.y)
             graph.setheading(0)
 
+            graph.showturtle()
+
+            graph.pendown()
+            graph.begin_fill()
             graph.forward(rectangle.width)
             graph.right(90)
             graph.forward(rectangle.height)
@@ -147,5 +156,9 @@ class Base:
             graph.forward(rectangle.width)
             graph.right(90)
             graph.forward(rectangle.height)
+            graph.end_fill()
+            graph.penup()
+
+            graph.hideturtle()
 
         turtle.done()
