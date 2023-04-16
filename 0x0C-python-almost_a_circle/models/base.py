@@ -66,6 +66,6 @@ class Base:
             dictionary (Dict<str, int>): Dictionary or keyworded arguments
             to parse
         """
-        dummy_obj = cls()
+        dummy_obj = cls(10, 10, 10)
         dummy_obj.update(**dictionary)
         return dummy_obj
