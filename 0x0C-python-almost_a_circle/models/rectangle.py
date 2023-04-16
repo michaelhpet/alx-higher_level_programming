@@ -1,0 +1,68 @@
+#!/usr/bin/python3
+"""Rectangle class module."""
+from models.base import Base
+
+
+class Rectangle(Base):
+    """Blueprint for rectangle objects.
+
+    Attributes:
+        width (int, float): Width of rectangle
+        height (int, float): Height of rectangle
+        x (int, float): X coordinate of rectangle
+        y (int, float): Y coordinate of rectangle
+    """
+
+    def __init__(self, width, height, x=0, y=0, id=None):
+        """Initialize a rectangle.
+
+        Args:
+            width (int, float): Width of rectangle
+            height (int, float): Height of rectangle
+            x (int, float): X coordinate of rectangle
+            y (int, float): Y coordinate of rectangle
+            id (int): Unique id of rectangle
+        """
+        super().__init__(id)
+        self.width = width
+        self.height = height
+
+    @property
+    def width(self):
+        """Get the width attribute of rectangle object."""
+        return self.__width
+
+    @width.setter
+    def width(self, value):
+        """Set the width attribute of rectangle object."""
+        self.__width = value
+
+    @property
+    def height(self):
+        """Get the height attribute of rectangle object."""
+        return self.__height
+
+    @height.setter
+    def height(self, value):
+        """Set the height attribute of rectangle object."""
+        self.__height = value
+
+    @property
+    def x(self):
+        """Get the x attribute of rectangle object."""
+        return self.__x
+
+    @x.setter
+    def x(self, value):
+        """Set the x attribute of rectangle object."""
+        self.__x = value
+
+    @property
+    def y(self):
+        """Get the y attribute of rectangle object."""
+        return self.__y
+
+    @y.setter
+    def y(self, value):
+        """Set the y attribute of rectangle object."""
+        self.__y = value
