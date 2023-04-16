@@ -6,6 +6,8 @@ from models.rectangle import Rectangle
 from models.base import Base
 from io import StringIO
 import sys
+import json
+import os
 
 
 class TestSquareInstance(unittest.TestCase):
@@ -151,6 +153,29 @@ class TestSquareMethods(unittest.TestCase):
         square1 = Square(12, 1, 4, 101)
         self.assertEqual(square1.to_dictionary(),
                          {"id": 101, "size": 12, "x": 1, "y": 4})
+
+    def test_save_to_file(self):
+        """Test save_to_file method."""
+        filename = "Square.json"
+        s1 = Square(10, 2, 8, 14)
+        s2 = Square(4, 0, 0, 8)
+        Square.save_to_file([s1, s2])
+
+        with open(filename, "r") as file:
+            self.assertListEqual(json.loads(file.read()), [
+                {"y": 8, "x": 2, "id": 14, "size": 10},
+                {"y": 0, "x": 0, "id": 8, "size": 4}
+            ])
+        os.remove(filename)
+
+    def test_create(self):
+        """Test create method."""
+        s1 = Square(3, 5, 1)
+        s1_dictionary = s1.to_dictionary()
+        s2 = Square.create(**s1_dictionary)
+        s2_dictionary = s2.to_dictionary()
+
+        self.assertDictEqual(s1_dictionary, s2_dictionary)
 
 
 if __name__ == "__main__":

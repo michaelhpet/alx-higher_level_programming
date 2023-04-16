@@ -5,6 +5,8 @@ from models.rectangle import Rectangle
 from models.base import Base
 from io import StringIO
 import sys
+import json
+import os
 
 
 class TestRectangleInstance(unittest.TestCase):
@@ -149,6 +151,29 @@ class TestRectangleMethods(unittest.TestCase):
         rectangle1 = Rectangle(12, 9, 1, 3, 78)
         self.assertEqual(rectangle1.to_dictionary(),
                          {"id": 78, "width": 12, "height": 9, "x": 1, "y": 3})
+
+    def test_save_to_file(self):
+        """Test save_to_file method."""
+        filename = "Rectangle.json"
+        r1 = Rectangle(10, 7, 2, 8, 85)
+        r2 = Rectangle(2, 4, 0, 0, 15)
+        Rectangle.save_to_file([r1, r2])
+
+        with open(filename, "r") as file:
+            self.assertListEqual(json.loads(file.read()), [
+                {"y": 8, "x": 2, "id": 85, "width": 10, "height": 7},
+                {"y": 0, "x": 0, "id": 15, "width": 2, "height": 4}
+            ])
+        os.remove(filename)
+
+    def test_create(self):
+        """Test create method."""
+        r1 = Rectangle(3, 5, 1)
+        r1_dictionary = r1.to_dictionary()
+        r2 = Rectangle.create(**r1_dictionary)
+        r2_dictionary = r2.to_dictionary()
+
+        self.assertDictEqual(r1_dictionary, r2_dictionary)
 
 
 if __name__ == "__main__":

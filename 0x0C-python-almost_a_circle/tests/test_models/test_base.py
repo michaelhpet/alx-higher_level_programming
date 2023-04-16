@@ -52,20 +52,6 @@ class TestBase(unittest.TestCase):
                              [{'height': 4, 'width': 10, 'id': 89},
                               {'height': 7, 'width': 1, 'id': 7}])
 
-    def test_save_to_file(self):
-        """Test save_to_file method."""
-        filename = "Rectangle.json"
-        r1 = Rectangle(10, 7, 2, 8)
-        r2 = Rectangle(2, 4)
-        Rectangle.save_to_file([r1, r2])
-
-        with open(filename, "r") as file:
-            self.assertListEqual(json.loads(file.read()), [
-                {"y": 8, "x": 2, "id": 1, "width": 10, "height": 7},
-                {"y": 0, "x": 0, "id": 2, "width": 2, "height": 4}
-            ])
-        os.remove(filename)
-
 
 if __name__ == "__main__":
     unittest.main()
