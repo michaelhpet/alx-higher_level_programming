@@ -72,9 +72,13 @@ class Base:
             dictionary (Dict<str, int>): Dictionary or keyworded arguments
             to parse
         """
-        dummy_obj = cls(10, 10, 10)
-        dummy_obj.update(**dictionary)
-        return dummy_obj
+        if cls.__name__ == "Rectangle":
+            shape = cls(10, 10)
+        else:
+            shape = cls(10)
+
+        shape.update(**dictionary)
+        return shape
 
     @classmethod
     def load_from_file(cls):
