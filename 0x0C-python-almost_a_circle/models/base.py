@@ -93,19 +93,22 @@ class Base:
         Args:
             list_objs (list): List of [inherited] instances of Base class.
         """
-        list_dictionaries = [obj.to_dictionary() for obj in list_objs]
         with open("{:s}.csv".format(cls.__name__), "w") as file:
-            if len(list_dictionaries) == 0:
+            if list_objs is None:
                 file.write("[]")
             else:
-                fieldnames_dict = {
-                    "Rectangle": ["id", "width", "height", "x", "y"],
-                    "Square": ["id", "size", "x", "y"]
-                }
-                fieldnames = fieldnames_dict[cls.__name__]
-                writer = csv.DictWriter(file, fieldnames=fieldnames)
-                for row in list_dictionaries:
-                    writer.writerow(row)
+                list_dictionaries = [obj.to_dictionary() for obj in list_objs]
+                if len(list_dictionaries) == 0:
+                    file.write("[]")
+                else:
+                    fieldnames_dict = {
+                        "Rectangle": ["id", "width", "height", "x", "y"],
+                        "Square": ["id", "size", "x", "y"]
+                    }
+                    fieldnames = fieldnames_dict[cls.__name__]
+                    writer = csv.DictWriter(file, fieldnames=fieldnames)
+                    for row in list_dictionaries:
+                        writer.writerow(row)
 
     @classmethod
     def load_from_file_csv(cls):
