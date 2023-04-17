@@ -46,9 +46,12 @@ class Base:
         Args:
             list_objs (list): List of objects
         """
-        list_dictionaries = [obj.to_dictionary() for obj in list_objs]
         with open("{:s}.json".format(cls.__name__), "w") as file:
-            file.write(Base.to_json_string(list_dictionaries))
+            if list_objs is None:
+                file.write("[]")
+            else:
+                list_dictionaries = [obj.to_dictionary() for obj in list_objs]
+                file.write(Base.to_json_string(list_dictionaries))
 
     @staticmethod
     def from_json_string(json_string):
