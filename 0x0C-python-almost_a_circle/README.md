@@ -23,3 +23,24 @@ It provides the following attributes and methods
 - `load_from_file_csv`: Class method creates a list of instances from CSV file which contains a serialized list of dictionaries.
 - `save_to_file_csv`: Class method creates a serialized list of dictionaries from list of objects and saves to a CSV file.
 - `draw`: Class method uses turtle to draw list of shapes (rectangles and squares) on the screen
+
+#### Rectangle class
+
+Inherits `Base` class
+
+- `width`: Width attribute of rectangle object
+- `height`: Height attribute of rectangle object
+- `x`: X coordinate attribute of rectangle object
+- `y`: Y coordinate attribute of rectangle object
+- `area`: Instance method returns the area of rectangle object
+- `display`: Instance method prints rectangle object to `stdout`
+- `update`: Instance method updates rectangle object with `*args` and `**kwargs`
+- `to_dictionary`: Instance method creates a dictionary representation of rectangle object.
+
+#### Square class
+
+Inherits `Rectangle` class
+
+- `size`: Size attribute of square object. Defines both `width` and `height`
+- `update`: Instance method updates square object with `*args` and `**kwargs`
+- `to_dictionary`: Instance method creates a dictionary representation of square object.
