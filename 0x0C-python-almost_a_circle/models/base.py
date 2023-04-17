@@ -3,6 +3,7 @@
 import json
 import csv
 import turtle
+import random
 
 
 class Base:
@@ -137,9 +138,11 @@ class Base:
         graph.screen.bgcolor("#BCBCBC")
         graph.shape("circle")
         graph.color("black")
-        graph.fillcolor("#1E1E1E")
         graph.pensize(2)
         graph.speed(2)
+
+        fillcolors = ["red", "blue", "green", "#1E1E1E", "yellow",
+                      "pink", "crimson", "orange", "aqua", "darkblue"]
 
         for rectangle in list_rectangles + list_squares:
             graph.goto(rectangle.x, rectangle.y)
@@ -148,6 +151,7 @@ class Base:
             graph.showturtle()
 
             graph.pendown()
+            graph.fillcolor(fillcolors[random.randint(0, 9)])
             graph.begin_fill()
             graph.forward(rectangle.width)
             graph.right(90)
