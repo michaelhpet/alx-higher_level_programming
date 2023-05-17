@@ -3,6 +3,6 @@
 -- results must be sorted in ascending order by tv_shows.title and tv_show_genres.genre_id
 SELECT t.title, g.genre_id
 FROM hbtn_0d_tvshows.tv_shows t
-JOIN hbtn_0d_tvshows.tv_show_genres g
+INNER JOIN hbtn_0d_tvshows.tv_show_genres g
 ON t.id = g.show_id
 ORDER BY t.title, g.genre_id;
