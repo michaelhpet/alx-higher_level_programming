@@ -1,4 +1,4 @@
 #!/usr/bin/node
-const args = Array.from(process.argv).slice(2);
-const message = args?.at(0) ?? 'No argument';
-console.log(message);
+console.log(
+  typeof process.argv[2] === 'undefined' ? 'No argument' : process.env[2]
+);
