@@ -15,7 +15,7 @@ def main():
     """Entry point of program."""
     connection = MySQLdb.connect("localhost", argv[1], argv[2], argv[3])
     cursor = connection.cursor()
-    cursor.execute("SELECT * FROM states WHERE name LIKE 'N%';")
+    cursor.execute("SELECT * FROM states WHERE name LIKE BINARY 'N%';")
     results = cursor.fetchall()
     for result in results:
         print(result)
