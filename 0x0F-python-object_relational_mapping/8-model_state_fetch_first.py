@@ -17,10 +17,10 @@ def main():
     Session = sessionmaker(bind=engine)
     session = Session()
 
-    states = session.query(State).order_by(State.id).limit(1)
-    if states.count() == 0:
+    state = session.query(State).order_by(State.id).first()
+    if state is None:
         print("Nothing")
-    for state in states:
+    else:
         print(f"{state.id}: {state.name}")
 
 
