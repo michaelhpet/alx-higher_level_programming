@@ -6,7 +6,7 @@ from sys import argv
 
 def main():
     """Entry point of program."""
-    url = f"https://api.github.com/repos/{argv[1]}/{argv[2]}/commits"
+    url = f"https://api.github.com/repos/{argv[2]}/{argv[1]}/commits"
     response = requests.get(url)
     commits = response.json()
     commits = commits[:10]
