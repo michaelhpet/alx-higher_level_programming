@@ -7,7 +7,7 @@ from sys import argv
 def main():
     """Entry point of program."""
     url = argv[1]
-    response = requests(url)
+    response = requests.get(url)
     print(response.headers.get("X-Request-Id"))
 
 
