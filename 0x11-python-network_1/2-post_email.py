@@ -10,7 +10,7 @@ def main():
     url = argv[1]
     body = {"email": argv[2]}
     body = urlencode(body).encode("ascii")
-    request = Request(url)
+    request = Request(url, data=body)
     with urlopen(request) as response:
         print(response.read().decode("utf-8"))
 
