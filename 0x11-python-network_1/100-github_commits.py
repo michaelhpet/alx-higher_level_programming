@@ -1,14 +1,14 @@
 #!/usr/bin/python3
 """Get 10 most recent commits in repository."""
 import requests
-from sys import argv
+import sys
 
 
 def main():
     """Entry point of program."""
     url = "https://api.github.com/repos/{}/{}/commits".format(
-        argv[2],
-        argv[1]
+        sys.argv[2],
+        sys.argv[1]
     )
     response = requests.get(url)
     commits = response.json()
