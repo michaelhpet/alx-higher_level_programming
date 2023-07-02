@@ -9,12 +9,15 @@ def main():
     url = f"https://api.github.com/repos/{argv[2]}/{argv[1]}/commits"
     response = requests.get(url)
     commits = response.json()
-    commits = commits[:10]
-    for commit in commits:
-        print("{} {}".format(
-            commit.get("sha"),
-            commit.get("commit").get("author").get("name")
-        ))
+    try:
+        commits = commits[:10]
+        for commit in commits:
+            print("{} {}".format(
+                commit.get("sha"),
+                commit.get("commit").get("author").get("name")
+            ))
+    except Exception:
+        pass
 
 
 if __name__ == "__main__":
