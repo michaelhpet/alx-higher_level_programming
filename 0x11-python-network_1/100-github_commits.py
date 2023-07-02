@@ -1,25 +1,20 @@
 #!/usr/bin/python3
 """Get 10 most recent commits in repository."""
 import requests
-import sys
+from sys import argv
 
 
 def main():
     """Entry point of program."""
-    url = "https://api.github.com/repos/{}/{}/commits".format(
-        sys.argv[2],
-        sys.argv[1]
-    )
+    url = f"https://api.github.com/repos/{argv[2]}/{argv[1]}/commits"
     response = requests.get(url)
     commits = response.json()
     try:
-        commits = commits[:10]
-        for commit in commits:
-            print("{} {}".format(
-                commit.get("sha"),
-                commit.get("commit").get("author").get("name")
-            ))
-    except Exception:
+        for i in range(10):
+            print("{}: {}".format(
+                commits[i].get("sha"),
+                commits[i].get("commit").get("author").get("name")))
+    except IndexError:
         pass
 
 
