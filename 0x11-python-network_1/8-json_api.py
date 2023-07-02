@@ -18,3 +18,7 @@ def main():
             print(f'[{result.get("id")}] {result.get("name")}')
     except ValueError:
         print("Not a valid JSON")
+
+
+if __name__ == "__main__":
+    main()
