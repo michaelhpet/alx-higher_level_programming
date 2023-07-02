@@ -10,11 +10,13 @@ def main():
     response = requests.get(url)
     commits = response.json()
     try:
-        for i in range(10):
+        commits = commits[:10]
+        for commit in commits:
             print("{}: {}".format(
-                commits[i].get("sha"),
-                commits[i].get("commit").get("author").get("name")))
-    except IndexError:
+                commit.get("sha"),
+                commit.get("commit").get("author").get("name")
+            ))
+    except Exception:
         pass
 
 
