@@ -10,7 +10,7 @@ def main():
     request = Request(url)
     with urlopen(request) as response:
         headers = dict(response.headers)
-        print(headers["X-Request-Id"])
+        print(headers.get("X-Request-Id"))
 
 
 if __name__ == "__main__":
