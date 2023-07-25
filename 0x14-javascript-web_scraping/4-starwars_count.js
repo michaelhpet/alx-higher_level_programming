@@ -7,7 +7,7 @@ request(endpoint, (error, _, body) => {
 
   const results = JSON.parse(body).results;
   const count = results.reduce((count, m) => {
-    return m.characters.find((c) => c.endsWith('/18/')) ? count++ : count;
+    return m.characters.find((c) => c.endsWith('/18/')) ? ++count : count;
   }, 0);
   console.log(count);
 });
