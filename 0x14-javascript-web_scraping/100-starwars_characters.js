@@ -9,10 +9,16 @@ request(endpoint, { method: 'GET' }, (error, _, body) => {
     return;
   }
   const characters = JSON.parse(body).characters;
-  for (const endpoint of characters) {
-    request(endpoint, { method: 'GET' }, (error, _, body) => {
-      if (error) console.log(error);
-      console.log(JSON.parse(body).name);
-    });
-  }
+  printCharacters(characters, 0);
 });
+
+function printCharacters (characters, i) {
+  request(characters[i], { method: 'GET' }, (error, _, body) => {
+    if (error) {
+      console.log(error);
+      return;
+    }
+    console.log(JSON.parse(body).name);
+    if (i < characters.length - 1) printCharacters(characters, ++i);
+  });
+}
