@@ -1,4 +1,4 @@
-const redHeader = $("div#red_header");
+const redHeader = $('div#red_header');
 redHeader.click(() => {
-  $("header").addClass("red");
+  $('header').addClass('red');
 });
