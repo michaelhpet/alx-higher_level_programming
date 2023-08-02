@@ -1,5 +1,5 @@
-const redHeader = $("div#toggle_header");
-redHeader.click(() => {
+const toggleHeader = $("div#toggle_header");
+toggleHeader.click(() => {
   const header = $("header");
   if (header.attr("class").includes("red")) {
     header.removeClass("red");
