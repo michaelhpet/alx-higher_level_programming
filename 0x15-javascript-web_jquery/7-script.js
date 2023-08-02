@@ -1,6 +1,7 @@
 const character = $("div#character");
-fetch("https://swapi-api.alx-tools.com/api/people/5/?format=json").then((r) =>
-  r.json().then((response) => {
+$.get(
+  "https://swapi-api.alx-tools.com/api/people/5/?format=json",
+  (response) => {
     character.html(response.name);
-  })
+  }
 );
